@@ -16,18 +16,18 @@ union
 
 int main() 
 {	
-	scanf("%f", &str.f);
+	scanf ("%f", &str.f);
 	if (str.BitField.exp == 0 && str.BitField.mant == 0) 
 	{
-			printf("zero");
+			printf ("zero");
 	}
 	else if (str.BitField.sign == 0 &&  str.BitField.exp == 255 && str.BitField.mant == 0) 
 	{
-		printf(" + infinity ");
+		printf (" + infinity ");
 	}
 	else if (str.BitField.sign == -1 &&  str.BitField.exp == 255 && str.BitField.mant == 0)
 	{
-		printf(" - infinity ");
+		printf (" - infinity ");
 	} 
 	else if (str.BitField.exp == 255 && str.BitField.mant != 0 )
 	{
@@ -35,7 +35,12 @@ int main()
 	}
 	else
 	{
-	printf ("(-1) ^ %d * 2^ %d * %f = %f", str.BitField.sign, str.BitField.exp - 127, 1 + str.BitField.mant / (float) (1 << 23), str.f);
+	 	if (sign=0)
+		{
+			printf ("2^ %d * %f = %f", exp - 127, 1 + mantisa / (float) (1 << 23), gen.f);
+		} else
+			printf (" - 2^ %d * %f = %f", exp - 127, 1 + mantisa / (float) (1 << 23), gen.f);
+
 	}
 	return 0;
 }
