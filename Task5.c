@@ -16,26 +16,26 @@ union
 
 int main() 
 {	
-	scanf("%f",&str.f);
+	scanf("%f", &str.f);
 	if (str.BitField.exp == 0 && str.BitField.mant == 0) 
 	{
 			printf("zero");
 	}
-	else if (str.BitField.sign == 0 &&  str.BitField.exp == 255 && str.BitField.mant==0 ) 
+	else if (str.BitField.sign == 0 &&  str.BitField.exp == 255 && str.BitField.mant == 0) 
 	{
 		printf(" + infinity ");
 	}
-	else if (str.BitField.sign == -1 &&  str.BitField.exp == 255 && str.BitField.mant==0)
+	else if (str.BitField.sign == -1 &&  str.BitField.exp == 255 && str.BitField.mant == 0)
 	{
 		printf(" - infinity ");
 	} 
 	else if (str.BitField.exp == 255 && str.BitField.mant != 0 )
 	{
-		printf("NuN");
+		printf ("NuN");
 	}
 	else
 	{
-	printf ("(-1) ^ %d * 2^ %d * %f = %f", str.BitField.sign, str.BitField.exp - 127, 1+ str.BitField.mant / (float) (1 << 23), str.f);
+	printf ("(-1) ^ %d * 2^ %d * %f = %f", str.BitField.sign, str.BitField.exp - 127, 1 + str.BitField.mant / (float) (1 << 23), str.f);
 	}
 	return 0;
 }
