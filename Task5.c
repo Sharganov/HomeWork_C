@@ -17,7 +17,7 @@ union
 int main() 
 {	
 	scanf("%f",&str.f);
-	if(str.BitField.exp == 0 && str.BitField.mant == 0) 
+	if (str.BitField.exp == 0 && str.BitField.mant == 0) 
 	{
 			printf("zero");
 	}
