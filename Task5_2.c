@@ -34,7 +34,11 @@ int main()
 	else
 	{
 
-	printf ("(-1) ^ %d * 2^ %d * %f = %f", sign, exp - 127, 1+ mantisa / (float) (1 << 23), gen.f);
+		if (sign=0)
+		{
+			printf ("2^ %d * %f = %f", exp - 127, 1+ mantisa / (float) (1 << 23), gen.f);
+		} else
+			printf (" - 2^ %d * %f = %f", exp - 127, 1+ mantisa / (float) (1 << 23), gen.f);
 	}
     return 0;
 }
