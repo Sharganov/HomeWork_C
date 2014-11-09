@@ -3,44 +3,44 @@
  By Sharganov Artyom */
 
 #include <stdio.h>
-union 
-{
-	struct 
-	{
-	int mant: 23;
-	unsigned int exp: 8;
-	int sign: 1;
-	} BitField;
-	float f;
-} str;
 
-int main() 
-{	
-	scanf ("%f", &str.f);
-	if (str.BitField.exp == 0 && str.BitField.mant == 0) 
+union
+{
+float f;
+int i;
+}gen;
+
+int main()
+{
+	scanf("%f",&gen.f);
+	unsigned int mantisa  = (gen.i & 0x003fffff);
+	unsigned int exp = (gen.i & 0x7f800000) >> 23;
+	int sign  = gen.i & 0x100000000;
+		if(exp == 0 &&  mantisa == 0) 
 	{
-			printf ("zero");
+			printf("zero");
 	}
-	else if (str.BitField.sign == 0 &&  str.BitField.exp == 255 && str.BitField.mant == 0) 
+	else if (sign == 0 &&  exp == 255 && mantisa==0 ) 
 	{
-		printf (" + infinity ");
+		printf(" + infinity ");
 	}
-	else if (str.BitField.sign == -1 &&  str.BitField.exp == 255 && str.BitField.mant == 0)
+	else if (sign == -1 &&  exp == 255 && mantisa==0)
 	{
-		printf (" - infinity ");
+		printf(" - infinity ");
 	} 
-	else if (str.BitField.exp == 255 && str.BitField.mant != 0 )
+	else if (exp == 255 && mantisa != 0 )
 	{
-		printf ("NuN");
+		printf("NaN");
 	}
 	else
 	{
-	 	if (sign=0)
+		if (sign == 0)
 		{
-			printf ("2^ %d * %f = %f", exp - 127, 1 + mantisa / (float) (1 << 23), gen.f);
-		} else
-			printf (" - 2^ %d * %f = %f", exp - 127, 1 + mantisa / (float) (1 << 23), gen.f);
+	printf ("2^ %d * %f = %f", exp - 127, 1+ mantisa / (float) (1 << 23), gen.f);
+		} else 
+			printf (" - 2^ %d * %f = %f", exp - 127, 1+ mantisa / (float) (1 << 23), gen.f);
 
 	}
-	return 0;
+	
+    return 0;
 }
