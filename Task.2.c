@@ -1,6 +1,6 @@
 /*
 Welcome to storage
-Возведение в степень 
+Involution
 By Sharganov Atrem
 */
 
