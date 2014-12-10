@@ -5,7 +5,6 @@ By Sharganov Atrem
 */
 
 #include <stdio.h>
-
 int binpow (int, int);
 int main()
 {
@@ -16,13 +15,13 @@ int main()
 	printf("%d", k);
 	return 0;
 }
-
 int binpow (int a, int n)
  {
 	int res = 1;
 	while (n)
+	{
 		if (n & 1)
- {
+ 		{
 			res *= a;
 			--n;
 		}
@@ -31,5 +30,6 @@ int binpow (int a, int n)
 			a *= a;
 			n =n>> 1;
 		}
+	}
 return res;
 }
