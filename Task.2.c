@@ -3,6 +3,7 @@ Welcome to storage
 Involution
 By Sharganov Atrem
 */
+
 #include <stdio.h>
 int binpow (int, int);
 int main()
