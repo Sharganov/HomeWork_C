@@ -14,17 +14,18 @@ int main()
 	scanf("%s", substr);
 	str_len = strlen(str);
 	sub_len = strlen(substr);
+    
 	for ( i = 0; i <= str_len - sub_len; i++)
     	{ 
 		p = 1;
 		for (j = 0; j < sub_len; j++ )
 		{  
-				if (str[i+j] != substr[j])
-                		{   
-					 p = 0;
-                    			break;
-        		       }
-             	}
+			if (str[i+j] != substr[j])
+                	{   
+				 p = 0;
+                		 break;
+                	}
+        	 }
             if (p) counter++;
         }
     printf("%d\n", counter);
