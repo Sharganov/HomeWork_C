@@ -13,7 +13,6 @@ int FitBits(int x, int n)
 
 }
 
-
 int main()
 {
     int x, n;
