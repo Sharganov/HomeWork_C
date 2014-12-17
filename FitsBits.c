@@ -5,15 +5,20 @@ By Sharganov Artem
 
 */
 
-
 #include <stdio.h>
+
+int FitBits(int x, int n)
+{
+   return !((x >> (n - 1)) + (!!(x >> (n-1))));
+
+}
+
 
 int main()
 {
-	int n, w;
-	scanf("%d %d", &n, &w);
-	int t = sizeof(int) * 8 + 1 + ~w; 
-	int res = ! (((n << t) >>t) ^ n); 
-	printf("%d", res);
-	return 0;
+    int x, n;
+    scanf("%d", &x);
+    scanf("%d", &n);
+    printf("%d", fitBits(x, n));
+    return 0;
 }
