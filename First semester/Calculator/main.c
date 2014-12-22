@@ -1,9 +1,8 @@
-#include "logic_calc.h"
+#include "Calculator.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-
 int main()
 {	
 	stack *element = (stack*) malloc(sizeof stack);
@@ -13,8 +12,7 @@ int main()
 	while (1)
 	{
 		scanf("%s", str);
-		
-	if(str[0] == '+')
+		if(str[0] == '+')
 		{
 		brain(element, 1);
 		}
