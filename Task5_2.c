@@ -2,6 +2,7 @@
  Allocation of sign, exponent, significand in float number with using bitfield
  By Sharganov Artyom */
  
+ 
 #include <stdio.h>
 union
 {
