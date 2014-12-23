@@ -5,16 +5,23 @@ Possible operations: '+', '-', '*', '/'
 By Sharganov Artem
 */
 
-#include "stacklib.h"
+##include "stacklib.h"
 
 void brain(stack *element, int k)
 {
 	node *result = lb_get_new(0);
 	stack* num1 = st_pop(element);
-	if(num1 == NULL) return;
+	if(num1 == NULL) 
+	{
+		exit(1);
+	}
 	num1->next = NULL;
 	stack* num2 = st_pop(element);
-	if(num2 == NULL) return;
+	if(num2 == NULL) 
+	{
+		st_delete_list(num1);
+		exit(1);
+	}
 	num2->next = NULL;
 	if(k == 1)
 	{
@@ -56,17 +63,14 @@ void brain(stack *element, int k)
 	}
 	else if(k == 3)
 	{
-		if(num2->longnum->val == num2->longnum->val) result->val = 0;
-		else result->val = 1;
+
 		long_mult(result, num2->longnum, num1->longnum);
 	}
 	else if(k == 4)
 	{
-		long_dev(result, num2->longnum, num1->longnum);
-		
+		long_dev(result, num1->longnum, num2->longnum);
 	}	
-	st_push_front(element, result);
-	//st_delete_list(num1);
-	//st_delete_list(num2);
-
+	st_push_ln(element, result);
+	free(num1);
+	free(num2);
 }
