@@ -9,7 +9,8 @@ By Sharganov Artem
 #include <string.h>
 
 typedef struct node {
-    int val;
+    int n;
+	int val;
     struct node *next;
 } node;
 
@@ -25,4 +26,3 @@ node* lb_reverse(node *num);
 void lb_front_pop(node* where_, node *from);
 void egualize(node *first_number, node *second_number);
 node* lb_get_new(int val);
-void copy(node *where , node *from);
