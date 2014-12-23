@@ -12,3 +12,4 @@ void long_mult(node *result, node *first, node *second);
 void long_dev(node *result, node *first, node *second);
 void delete_num(node *head);
 void ln_delln(node* head);
+void copy(node *where , node *from);
