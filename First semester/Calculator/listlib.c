@@ -3,6 +3,9 @@ Welcome to Storage
 Realisation of listlib.h
 By Sharganov Artem
 */
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 #include "listlib.h"
 
 void lb_insert(node *head,  int val) 
@@ -24,11 +27,7 @@ void lb_insert(node *head,  int val)
 void lb_push(node *head, int number) 
 {
 	node *last = lb_get_last(head);
-	if(last)
-	{
-		node *tmp = (node*) malloc(sizeof(node));
-		tmp->val = number;
-		tmp->next = NULL;
+	node *tmp = lb_get_new(number);
 		if (last == NULL) 
 		{
 			last = tmp;
@@ -38,16 +37,19 @@ void lb_push(node *head, int number)
 		{
 			last->next = tmp;
 		}
-	}
+	
 }
 
 int lb_lenght(node *head)
 {
 	int lenght=0;
-	while (head) 
+	if(head == NULL)
+		return -1;
+	while (head != NULL) 
 	{	
 		lenght++;
         head = head->next;
+		if(head == NULL) break;
     }
 	return lenght - 1;
 }
@@ -61,7 +63,6 @@ void lb_delete_element(node *head)
 		tmp = head -> next;
 		head->next = head->next->next;
 	}
-	else printf("there is no this element");
 	free(tmp);
  }
 
@@ -80,7 +81,7 @@ void lb_delete(node *head)
 {
 	if(head == NULL)
 	{
-		printf("There is not elements!");
+		//printf("There is not elements!");
 		return;
 	}
 	while(head)
@@ -114,7 +115,7 @@ void lb_proccessing(char arr[], node *head)
 				if ((arr[i] -'0')>9 || (arr[i] - '0')< 0)	
 				{
 					printf("Wrong argument!");
-					return;
+					exit(1);
 				}
 			lb_insert(head, (int) arr[i] - '0');
 			
@@ -127,7 +128,7 @@ void lb_proccessing(char arr[], node *head)
 			if ((arr[i] -'0')>9 || (arr[i] - '0')< 0)
 				{
 					printf("Wrong argument!");
-					return;
+					exit(1);
 				}
 			lb_insert(head,(int) arr[i]- '0');
 		}
@@ -146,7 +147,7 @@ node* lb_get_new(int val)
 	if(tmp == NULL) 
 	{
 		printf("Not enough memory!");
-		return NULL;
+		exit(1);
 	}
 	tmp->next  = NULL;
 	tmp->val = val;
@@ -155,7 +156,7 @@ node* lb_get_new(int val)
 
 node* lb_reverse(node *num)
 {
-	node *tmp = lb_get_new(0);
+	node *tmp = lb_get_new(num->val);
 	node *num_head = num;
 	num = num->next;
 	while (num)
@@ -168,25 +169,14 @@ node* lb_reverse(node *num)
 	return tmp;
 }
 
-void copy(node *where , node *from)
-{
-	egualize(where, from);
-	while(from)
-	{
-		where->val = from->val;
-		where = where->next;
-		from = from->next;
-	}
 
-}
 
 void egualize(node *first_number, node *second_number)
 {
-	unsigned int f_lenght = lb_lenght(first_number);
-	unsigned int s_lenght = lb_lenght(second_number);
+	int f_lenght = lb_lenght(first_number);
+	int s_lenght = lb_lenght(second_number);
 	if(f_lenght > s_lenght)
 	{
-		
 		int k = f_lenght - s_lenght;
 		while(k--)
 		{
@@ -196,7 +186,6 @@ void egualize(node *first_number, node *second_number)
 	if (f_lenght < s_lenght)
 	{
 		int k = s_lenght - f_lenght;
-		
 		while(k--)
 		{
 			lb_push(first_number, 0);
