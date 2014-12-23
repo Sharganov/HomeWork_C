@@ -3,6 +3,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
+
 int main()
 {	
 	stack *element = (stack*) malloc(sizeof stack);
@@ -12,7 +13,8 @@ int main()
 	while (1)
 	{
 		scanf("%s", str);
-		if(str[0] == '+')
+		
+	if(str[0] == '+')
 		{
 		brain(element, 1);
 		}
@@ -31,11 +33,11 @@ int main()
 		else if(str[0] == '#') break;
 		else if (str[0] == '=') 
 		{
-			st_print(element->next);
+			st_print_head(element->next);
 		}
 		else 
 		{
-			st_push(element, str);
+			st_push_char(element, str);
 		}
 	}
 	st_delete_list(element);	
